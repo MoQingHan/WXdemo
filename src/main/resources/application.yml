@@ -1,0 +1,47 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /demo1
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  thymeleaf:
+    cache: false
+  mvc:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://130.10.7.204:3306/sxcasrbac?useUnicode=true&amp;characterEncoding=UTF-8
+    username: jntsbt
+    password: jntsbt
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,slf4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    #useGlobalDataSourceStat: true
+mybatis:
+  type-aliases-package: com.yang.springbootDemo.model
+  mapper-locations: classpath:/com/yang/springbootDemo/mapper/*.xml
+  config-locations: classpath:mybatis/mybatis-config.xml
+
+    # 显示sql
+logging:
+  level:
+    com:
+      shrek:
+        supervisor:
+          dao: debug
