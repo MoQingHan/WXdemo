@@ -1,13 +1,13 @@
 package com.testspringboot.lottery.pojo;
 
 public class WXUserInfo {
-    private String nickName;
+    private String nickName;//昵称
     private String gender;
     private String language;
     private String city;
     private String province;
     private String country;
-    private String avatarUrl;
+    private String avatarUrl;//头像
 
     public String getNickName() {
         return nickName;
