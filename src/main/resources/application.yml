@@ -11,8 +11,8 @@ spring:
   mvc:
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://130.10.7.204:3306/sxcasrbac?useUnicode=true&amp;characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://130.10.7.204:3306/sxcasrbac?useUnicode=true&characterEncoding=UTF-8
     username: jntsbt
     password: jntsbt
     platform: mysql
@@ -34,14 +34,14 @@ spring:
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
 mybatis:
-  type-aliases-package: com.yang.springbootDemo.model
-  mapper-locations: classpath:/com/yang/springbootDemo/mapper/*.xml
+  type-aliases-package: com.testspringboot.lottery.dao
+  mapper-locations: classpath:mapper/*.xml
   config-locations: classpath:mybatis/mybatis-config.xml
 
     # 显示sql
 logging:
   level:
     com:
-      shrek:
-        supervisor:
+      testspringboot:
+        lottery:
           dao: debug
