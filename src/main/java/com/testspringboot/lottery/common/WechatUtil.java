@@ -1,5 +1,6 @@
 package com.testspringboot.lottery.common;
 
+import com.testspringboot.lottery.Conf.WxConf;
 import com.testspringboot.lottery.common.HttpClient.HttpClientUtil;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.Arrays;
@@ -80,10 +81,9 @@ public class WechatUtil {
 
     public static  String code2session(String js_code) throws Exception{
         String url="https://api.weixin.qq.com/sns/jscode2session";
-        String appid="wx4d8173254134471e";
-        String secret="e16e6d688edc446325210f1ae4c34116";
+        String appid= WxConf.getAppid();
+        String secret=WxConf.getSecret();
         String queryString=String.format("appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",appid,secret,js_code);
-        //String querySring="appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code";
         return HttpClientUtil.doGet(url,queryString,"UTF-8",false);
     }
 }

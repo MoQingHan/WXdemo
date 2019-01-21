@@ -1,7 +1,7 @@
 server:
   port: 8888
   servlet:
-    context-path: /demo1
+    context-path: /lottery
   tomcat:
     uri-encoding: UTF-8
 
@@ -12,9 +12,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://130.10.7.204:3306/sxcasrbac?useUnicode=true&amp;characterEncoding=UTF-8
-    username: jntsbt
-    password: jntsbt
+    url: jdbc:mysql://103.243.138.3:3306/vue2test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: vue
+    password: vue1234
     platform: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 1
@@ -31,17 +31,14 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,slf4j
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    # 合并多个DruidDataSource的监控数据
-    #useGlobalDataSourceStat: true
-mybatis:
-  type-aliases-package: com.yang.springbootDemo.model
-  mapper-locations: classpath:/com/yang/springbootDemo/mapper/*.xml
-  config-locations: classpath:mybatis/mybatis-config.xml
 
-    # 显示sql
+mybatis:
+  type-aliases-package: com.testspringboot.lottery.dao
+  mapper-locations: classpath:mapper/*.xml
+  config-locations: classpath:mybatis/mybatis-config.xml
 logging:
   level:
     com:
-      shrek:
-        supervisor:
+      testspringboot:
+        lottery:
           dao: debug
