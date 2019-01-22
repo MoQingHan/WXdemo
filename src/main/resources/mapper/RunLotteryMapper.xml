@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testspringboot.lottery.dao.RunLotteryMapper">
+
+    <update id="updateMoney" >
+      	 update lottery_user u,(select sum(bet_count) zh,user_id,bet_num from lottery_betinfo where `status`=0 group by user_id,bet_num  ) info
+	 set  u.money =  u.money+info.zh*#{betTimes,jdbcType=INTEGER},u.mod_time=#{modTime,jdbcType=TIMESTAMP}
+	 where u.user_id=info.user_id  and info.bet_num=#{betNum,jdbcType=INTEGER}
+
+   </update>
+
+    <update id="updateWin" >
+      update lottery_betinfo set `status` =1 ,mod_time=#{modTime,jdbcType=TIMESTAMP} where  `status`=0 and bet_num = #{betNum,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateFail" >
+      update lottery_betinfo set `status` =2, mod_time=#{modTime,jdbcType=TIMESTAMP} where  `status`=0 and bet_num != #{betNum,jdbcType=INTEGER}
+    </update>
+</mapper>

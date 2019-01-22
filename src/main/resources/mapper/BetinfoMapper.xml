@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testspringboot.lottery.dao.BetinfoMapper">
+  <resultMap id="BaseResultMap" type="com.testspringboot.lottery.pojo.Betinfo">
+    <id column="info_id" jdbcType="BIGINT" property="infoId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="bet_num" jdbcType="INTEGER" property="betNum" />
+    <result column="bet_count" jdbcType="INTEGER" property="betCount" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="mod_time" jdbcType="TIMESTAMP" property="modTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    info_id, user_id, bet_num, bet_count, status, create_time, mod_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from lottery_betinfo
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lottery_betinfo
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.testspringboot.lottery.pojo.Betinfo">
+    insert into lottery_betinfo (info_id, user_id, bet_num,
+      bet_count, status, create_time,
+      mod_time)
+    values (#{infoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{betNum,jdbcType=INTEGER},
+      #{betCount,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{modTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.testspringboot.lottery.pojo.Betinfo">
+    insert into lottery_betinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infoId != null">
+        info_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="betNum != null">
+        bet_num,
+      </if>
+      <if test="betCount != null">
+        bet_count,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infoId != null">
+        #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="betNum != null">
+        #{betNum,jdbcType=INTEGER},
+      </if>
+      <if test="betCount != null">
+        #{betCount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.testspringboot.lottery.pojo.Betinfo">
+    update lottery_betinfo
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="betNum != null">
+        bet_num = #{betNum,jdbcType=INTEGER},
+      </if>
+      <if test="betCount != null">
+        bet_count = #{betCount,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.testspringboot.lottery.pojo.Betinfo">
+    update lottery_betinfo
+    set user_id = #{userId,jdbcType=BIGINT},
+      bet_num = #{betNum,jdbcType=INTEGER},
+      bet_count = #{betCount,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      mod_time = #{modTime,jdbcType=TIMESTAMP}
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+</mapper>
