@@ -42,9 +42,3 @@ mybatis:
     mapUnderscoreToCamelCase: true
     localCacheScope: statement
     jdbcTypeForNull: null
-logging:
-  level:
-    com:
-      testspringboot:
-        lottery:
-          dao: debug
