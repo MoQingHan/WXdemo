@@ -13,9 +13,9 @@ spring:
  #     prefix:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://130.10.7.204:3306/sxcasrbac?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: jntsbt
-    password: jntsbt
+    url: jdbc:mysql://103.243.138.3:3306/vue2test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: vue
+    password: vue1234
     platform: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -37,7 +37,11 @@ spring:
 mybatis:
   type-aliases-package: com.testspringboot.lottery.dao
   mapper-locations: classpath:mapper/*.xml
-  config-location: classpath:mybatis/mybatis-config.xml
+  #config-location: classpath:mybatis/mybatis-config.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
+    localCacheScope: statement
+    jdbcTypeForNull: null
 logging:
   level:
     com:
