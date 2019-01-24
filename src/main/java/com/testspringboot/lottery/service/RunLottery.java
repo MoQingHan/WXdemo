@@ -8,6 +8,7 @@ import com.testspringboot.lottery.pojo.Bet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class RunLottery {
     @Autowired
     BetMapper BetMapper;
 
+    @Transactional
     @Scheduled(cron="0 0/2 * * * ?")
     public void runLory(){
         Date date=new Date();
